@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Home Page</title>
+	<style>
+	body{
+	background-color: red;
+	}
+	</style>
+</head>
+<body>
+	<h1>Hello Friends</h1>
+	<div th:each="u : ${list}">
+	<h2 th:text="${u.id}"></h2>
+	<h2 th:text="${u.name}"></h2>
+	<h2 th:text="${u.address}"></h2>
+	<hr />
+	</div>
+	
+
+</body>
+</html>
