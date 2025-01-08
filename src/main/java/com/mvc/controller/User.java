@@ -22,6 +22,14 @@ public class User {
 	public void setAddress(String address) {
 		Address = address;
 	}
-	
-	
+	public User(Integer id, String name, String address) {
+		super();
+		this.id = id;
+		this.name = name;
+		Address = address;
+	}
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 }
