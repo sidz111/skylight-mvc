@@ -11,38 +11,43 @@
 
 </head>
 <body>
-	<!-- <h1>Hello Friends</h1>
-	<div th:each="u : ${list}">
-	<h2 th:text="${u.id}"></h2>
-	<h2 th:text="${u.name}"></h2>
-	<h2 th:text="${u.address}"></h2>
+	<h1 class="text-center">Student Page</h1>
+	<h4 class="text-center text-success" th:text="${message}"></h4>
+	<a class="btn bg-warning" href="/add-student">Add Student</a>
+
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>ID</td>
+					<td>Name</td>
+					<td>Email</td>
+					<td>Age</td>
+					<td>Mobile No</td>
+					<td>Address</td>
+					<td>School Name</td>
+					<td>Marks</td>
+					<td>Actions</td>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="s : ${students}">
+					<td th:text="${s.id}"></td>
+					<td th:text="${s.name}"></td>
+					<td th:text="${s.email}"></td>
+					<td th:text="${s.age}"></td>
+					<td th:text="${s.mobile_no}"></td>
+					<td th:text="${s.address}"></td>
+					<td th:text="${s.school_name}"></td>
+					<td th:text="${s.marks}"></td>
+					<td>
+					<a class="btn bg-warning" th:href="@{'/remove/' + ${s.id}}">Remove</a>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
 	</div>
-	<hr /> -->
-
-	<table class="table">
-		<thead>
-			<tr>
-				<td>EmpId</td>
-				<td>Name of Employee</td>
-				<td>Mobile No</td>
-			</tr>
-		</thead>
-
-		<tbody>
-			<tr th:each="e: ${eList}">
-				<td th:text="${e.empId}"></td>
-				<td th:text="${e.name}"></td>
-				<td th:text="${e.mobile}"></td>
-			</tr>
-		</tbody>
-	</table>
-
-	<ul th:each="h: ${hospitals}">
-		<li th:text="${h.id}"></li>
-		<li th:text=${h.hospital_name}></li>
-		<li th:text=${h.address}></li>
-		<li th:text=${h.opening_time}></li>
-	</ul>
-
 </body>
 </html>
