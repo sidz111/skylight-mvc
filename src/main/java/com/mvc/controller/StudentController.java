@@ -61,5 +61,46 @@ public class StudentController {
 			return "index";			
 		}
 	}
+	
+	@GetMapping("/update-student/{id}")
+	public String getUpdateStudent(@PathVariable("id") Integer id, Model model) {
+	    Optional<Student> s = Optional.ofNullable(studentService.getUserById(id));
+	    if(s.isEmpty()) {
+	        return "redirect:/";
+	    } else {
+	        model.addAttribute("student", s.get());
+	    }
+	    return "update-student";
+	}
+
+	
+	@PostMapping("/update/{id}")
+	public String postUpdateStudent(
+			@PathVariable("id") Integer id,
+			@RequestParam("name") String name,
+			@RequestParam("email") String email,
+			@RequestParam("age") Integer age,
+			@RequestParam("mobile_no") String mobile_no,
+			@RequestParam("address") String address,
+			@RequestParam("school_name") String school_name,
+			@RequestParam("marks") Double marks,
+			RedirectAttributes redirectAttributes
+			) {
+		Optional<Student> s = Optional.ofNullable(studentService.getUserById(id));
+		if(s.isEmpty()) {
+			return null;
+		}
+		else {
+			s.get().setName(name);
+			s.get().setEmail(email);
+			s.get().setAge(age);
+			s.get().setMobile_no(mobile_no);
+			s.get().setAddress(address);
+			s.get().setSchool_name(school_name);
+			s.get().setMarks(marks);
+			studentService.addStudent(s.get());
+		}
+		return "redirect:/";
+	}
 
 }

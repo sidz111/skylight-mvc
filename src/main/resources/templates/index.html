@@ -42,12 +42,15 @@
 					<td th:text="${s.school_name}"></td>
 					<td th:text="${s.marks}"></td>
 					<td>
+					<a class="btn bg-warning" th:href="@{'/update-student/' + ${s.id}}">Update</a>
 					<a class="btn bg-warning" th:href="@{'/remove/' + ${s.id}}">Remove</a>
 					</td>
 				</tr>
 			</tbody>
-
 		</table>
+	</div>
+	<div th:each="s: ${students}">
+	<!-- <p th:text="${s}"></p> -->
 	</div>
 </body>
 </html>
