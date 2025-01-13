@@ -20,19 +20,19 @@ public class StudentController {
 	@Autowired
 	StudentService studentService;
 	
-	@GetMapping("/")
+	@GetMapping("/")                                            // Read
 	public String getHomePage(Model model) {
 		model.addAttribute("students", studentService.getAllStudents());
 		return "index";
 	}
 	
-	@GetMapping("/add-student")
+	@GetMapping("/add-student")                             // Insert     -- Get
 	public String getAddStudent() {
 		return "add-student";
 	}
 
 	
-	@PostMapping("/add")
+	@PostMapping("/add")                                 // Insert    -- Post
 	public String addStudent(
 			@RequestParam("name") String name,
 			@RequestParam("email") String email,
@@ -48,7 +48,7 @@ public class StudentController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/remove/{id}")
+	@GetMapping("/remove/{id}")                                // Delete
 	public String removeStudent(@PathVariable("id") Integer id, Model model) {
 		Optional<Student> s = Optional.ofNullable(studentService.getUserById(id));
 		if(s.isEmpty()) {
@@ -62,11 +62,12 @@ public class StudentController {
 		}
 	}
 	
-	@GetMapping("/update-student/{id}")
+	@GetMapping("/update-student/{id}")                     // Update -- Get
 	public String getUpdateStudent(@PathVariable("id") Integer id, Model model) {
 	    Optional<Student> s = Optional.ofNullable(studentService.getUserById(id));
 	    if(s.isEmpty()) {
-	        return "redirect:/";
+	    	model.addAttribute("message", "Student Not found with Id: "+id);
+	        return "index";
 	    } else {
 	        model.addAttribute("student", s.get());
 	    }
@@ -74,7 +75,7 @@ public class StudentController {
 	}
 
 	
-	@PostMapping("/update/{id}")
+	@PostMapping("/update/{id}")                                      // Update -- Post
 	public String postUpdateStudent(
 			@PathVariable("id") Integer id,
 			@RequestParam("name") String name,

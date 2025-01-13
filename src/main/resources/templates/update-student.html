@@ -73,7 +73,7 @@ input::placeholder {
 	<h1>Update Student</h1>
 
 	<!-- Form to update student data -->
-	<form th:action="@{/update/{id}(id=${student.id})}" method="post">
+	<form th:action="@{/update/{id}(id=${student.id})}" method="post">		
 	
 		<div class="form-group">
 			<input type="text" id="name" name="name" th:value="${student.name}" class="form-control"
